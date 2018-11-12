@@ -9,9 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrisEsExampleApiHost", "HrisEsExampleApiHost\HrisEsExampleApiHost.csproj", "{EFFE1B04-F1DB-4242-BD24-708D2413915F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrisEsExampleApiHost", "HrisEsExampleApiHost\HrisEsExampleApiHost.csproj", "{EFFE1B04-F1DB-4242-BD24-708D2413915F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrisEsExampleApiHost.Tests", "HrisEsExampleApiHost.Tests\HrisEsExampleApiHost.Tests.csproj", "{A37FCC22-FC20-4268-AA81-DFD6C5DC9524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrisEsExampleApiHost.Tests", "HrisEsExampleApiHost.Tests\HrisEsExampleApiHost.Tests.csproj", "{A37FCC22-FC20-4268-AA81-DFD6C5DC9524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeBenefitsLibrary", "EmployeeBenefitsLibrary\EmployeeBenefitsLibrary.csproj", "{31381002-DA2D-4773-B780-C6819C7C25B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeBenefitsLibrary.Tests", "EmployeeBenefitsLibrary.Tests\EmployeeBenefitsLibrary.Tests.csproj", "{63B2BB60-E1A1-4D79-AC4B-9DC584D09AD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{A37FCC22-FC20-4268-AA81-DFD6C5DC9524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A37FCC22-FC20-4268-AA81-DFD6C5DC9524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A37FCC22-FC20-4268-AA81-DFD6C5DC9524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31381002-DA2D-4773-B780-C6819C7C25B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31381002-DA2D-4773-B780-C6819C7C25B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31381002-DA2D-4773-B780-C6819C7C25B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31381002-DA2D-4773-B780-C6819C7C25B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B2BB60-E1A1-4D79-AC4B-9DC584D09AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B2BB60-E1A1-4D79-AC4B-9DC584D09AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B2BB60-E1A1-4D79-AC4B-9DC584D09AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B2BB60-E1A1-4D79-AC4B-9DC584D09AD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

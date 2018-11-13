@@ -31,10 +31,7 @@ namespace EmployeeBenefitsLibrary.Tests
             sut.Hire(id, name, salary);
 
             sut.NewEvents.Last()
-                .Should().BeEquivalentTo(expected, opt =>
-                {
-                    return opt.IncludingFields().Excluding(o => o.Id);
-                });
+                .Should().BeEquivalentTo(expected, opt => opt.IncludingFields());
         }
 
         [Theory]

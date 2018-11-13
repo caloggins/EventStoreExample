@@ -33,7 +33,7 @@ namespace EventStoreIntegration.Tests
 
             var result = sut.ConvertReadToDomain(new EmployeeTypeMap(), loaded);
 
-            result.Should().BeEquivalentTo(evt, opt => opt.Excluding(o => o.Id));
+            result.Should().BeEquivalentTo(evt);
         }
     }
 }

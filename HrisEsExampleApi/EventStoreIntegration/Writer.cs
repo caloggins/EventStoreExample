@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace EventStoreIntegration
                 let json = JsonConvert.SerializeObject(newEvent)
                 let data = Encoding.UTF8.GetBytes(json)
                 select new EventData(
-                    newEvent.Id,
+                    Guid.NewGuid(),
                     name,
                     true,
                     data,

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EmployeeBenefitsLibrary;
 using EventStore.ClientAPI;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public class StreamLoader : IStreamLoader
     {

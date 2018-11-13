@@ -1,4 +1,4 @@
-﻿namespace EmployeeBenefitsLibrary.EventStoreIntegration
+﻿namespace EventStoreIntegration
 {
     public class LoadedEvent : EventFromStream
     {

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeDataLibrary
 {
-    [Table("Employee")]
     public class Employee
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long EmployeeKey;
-        public Guid EmployeeId;
-        public decimal Salary;
-        public string EmployeeName;
+        public int EmployeeKey { get; set; }
+        public Guid EmployeeId { get; set; }
+        public decimal Salary { get; set; }
+        public string EmployeeName { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Threading;
 using FakeItEasy;
 using FluentAssertions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace EmployeeDataLibrary.Tests
@@ -15,7 +16,11 @@ namespace EmployeeDataLibrary.Tests
 
         public GetEmployeesTests()
         {
-            database = A.Fake<IHrisDatabase>();
+            var options = new DbContextOptionsBuilder<HrisDatabase>()
+                .UseInMemoryDatabase("mydb")
+                .Options;
+
+            database = new HrisDatabase(options);
             sut = new GetEmployeesHandler(database);
         }
 
@@ -23,8 +28,9 @@ namespace EmployeeDataLibrary.Tests
         public async void Handle_ReturnsListOfEmployees()
         {
             employees = A.CollectionOfDummy<Employee>(5);
-            A.CallTo(() => database.Employees).ReturnsLazily(
-                () => TestDbSet.CreateFromCollection(employees));
+            database.Employees.AddRange(employees);
+            await database.SaveChangesAsync(CancellationToken.None);
+
             var request = A.Dummy<GetEmployees>();
 
             var result = await sut.Handle(request, CancellationToken.None);

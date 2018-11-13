@@ -1,9 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeDataLibrary
 {
     public interface IHrisDatabase
     {
-        IDbSet<Employee> Employees { get; set; }
+        DbSet<Employee> Employees { get; }
+
+        Task<int> SaveChangesAsync(CancellationToken token);
     }
 }

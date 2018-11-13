@@ -21,5 +21,12 @@ namespace EmployeeBenefitsLibrary
         {
             Salary = evt.Salary;
         }
+
+        [UsedImplicitly]
+        public void Apply(Terminated evt)
+        {
+            Salary = 0;
+            Terminated = true;
+        }
     }
 }

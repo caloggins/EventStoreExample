@@ -84,7 +84,30 @@ namespace HrisEsExampleApiHost.Tests
             request.EmployeeId.Should().Be(id);
         }
 
-        private ChangeSalary ValidChangeSalaryRequest()
+        [Fact]
+        public async void Terminate_ReturnsResponse()
+        {
+            var id = Guid.Parse("2eac09af-fc03-415b-b63e-19531116cf66");
+            var request = A.Dummy<Terminate>();
+
+            var response = await sut.Terminate(id, request);
+
+            response.Should().BeOfType<OkResult>();
+        }
+
+        [Fact]
+        public async void Terminate_DispatchesTheCommand()
+        {
+            var id = Guid.Parse("2eac09af-fc03-415b-b63e-19531116cf66");
+            var request = A.Dummy<Terminate>();
+
+            await sut.Terminate(id, request);
+
+            A.CallTo(() => mediator.Send(request, CancellationToken.None)).MustHaveHappened();
+            request.EmployeeId.Should().Be(id);
+        }
+
+        private static ChangeSalary ValidChangeSalaryRequest()
         {
             return new ChangeSalary
             {

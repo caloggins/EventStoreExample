@@ -8,6 +8,7 @@ namespace EventStoreIntegration
         {
             Add((typeof(EmployeeHired).Name, typeof(EmployeeHired)));
             Add((typeof(SalaryChanged).Name, typeof(SalaryChanged)));
+            Add((typeof(Terminated).Name, typeof(Terminated)));
         }
     }
 }

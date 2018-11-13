@@ -24,36 +24,45 @@ namespace EmployeeBenefitsLibrary
             if (salary <= 0)
                 throw new InvalidOperationException("Negative salaries are not allowed.");
 
-            var evt = new EmployeeHired
+            var employeeHired = new EmployeeHired
             {
                 EmployeeId = id,
                 Name = name,
                 Salary = salary,
             };
 
-            Apply(evt);
+            Apply(employeeHired);
         }
 
         public virtual void ChangeSalary(decimal salary, string reason)
         {
+            if(State.Terminated)
+                throw new InvalidOperationException("This employee has been terminated.");
             if (State.Id == Guid.Empty)
                 throw new InvalidOperationException("The employee must be hired.");
             if (salary < 0)
                 throw new InvalidOperationException("Negative salaries are not allowed.");
 
-            var evt = new SalaryChanged
+            var salaryChanged = new SalaryChanged
             {
                 Salary = salary,
                 Reason = reason
             };
 
-            Apply(evt);
+            Apply(salaryChanged);
         }
 
-        public void Terminate(string reason)
+        public virtual void Terminate(string reason)
         {
             if (State.Id == Guid.Empty)
                 throw new InvalidOperationException("You cannot fire someone you didn't hire!");
+
+            var terminated = new Terminated
+            {
+                Reason = reason
+            };
+
+            Apply(terminated);
         }
     }
 }

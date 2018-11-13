@@ -47,5 +47,15 @@ namespace HrisEsExampleApiHost
 
             return Ok();
         }
+
+        [HttpPost("{id:guid}/terminate")]
+        public async Task<IActionResult> Terminate(Guid id, Terminate request)
+        {
+            request.EmployeeId = id;
+
+            await mediator.Send(request);
+
+            return Ok();
+        }
     }
 }

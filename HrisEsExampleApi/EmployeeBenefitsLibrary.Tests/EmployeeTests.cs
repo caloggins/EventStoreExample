@@ -111,17 +111,55 @@ namespace EmployeeBenefitsLibrary.Tests
         }
 
         [Fact]
+        public void ChangeSalary_FailsWhenEmployeeIsTerminated()
+        {
+            HireEmployee();
+            TerminateEmployee();
+
+            Action act = () => sut.ChangeSalary(100000, "a good reason");
+
+            act.Should().Throw<InvalidOperationException>()
+                .WithMessage("This employee has been terminated.");
+        }
+
+        [Fact]
         public void Terminate_ThrowExceptionWhenNotHired()
         {
-            Action act = () => sut.Terminate("reason");
+            Action act = TerminateEmployee;
 
             act.Should().Throw<InvalidOperationException>()
                 .WithMessage("You cannot fire someone you didn't hire!");
         }
 
+        [Fact]
+        public void Terminate_SetsSalary()
+        {
+            HireEmployee();
+
+            TerminateEmployee();
+
+            state.Salary.Should().Be(0);
+        }
+
+        [Fact]
+        public void Terminate_ShouldHaveAppropriateEvent()
+        {
+            HireEmployee();
+
+            TerminateEmployee();
+
+            var terminated = sut.NewEvents.Last().As<Terminated>();
+            terminated.Reason.Should().Be("A Good reason.");
+        }
+
         private void HireEmployee()
         {
-            sut.Hire(Guid.NewGuid(), "name", 1);
+            sut.Hire(Guid.NewGuid(), "Sue Mann", 100000);
+        }
+
+        private void TerminateEmployee()
+        {
+            sut.Terminate("A Good reason.");
         }
     }
 }

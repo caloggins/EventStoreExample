@@ -35,7 +35,7 @@ namespace EmployeesMonitor
         private static void ProcessEvent(ResolvedEvent evt)
         {
             var type = evt.Event.EventType;
-            Console.WriteLine($"  Received event of type: {type}");
+            Console.WriteLine($"  Received event of type, {type}, with event number, {evt.OriginalEventNumber}.");
         }
 
         public void Dispose()

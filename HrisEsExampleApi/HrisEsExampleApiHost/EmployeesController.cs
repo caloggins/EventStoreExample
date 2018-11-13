@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrisEsExampleApiHost
 {
-    [Route("api/employees")]
+    [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -24,17 +24,28 @@ namespace HrisEsExampleApiHost
         }
 
         [HttpPost("hire")]
-        public async Task<IActionResult> Create([FromBody]HireEmployee details)
+        public async Task<IActionResult> Hire([FromBody]HireEmployee request)
         {
             try
             {
-                await mediator.Send(details);
+                await mediator.Send(request);
+
                 return Ok();
             }
             catch (InvalidOperationException)
             {
                 return BadRequest();
             }
+        }
+
+        [HttpPost("{id:guid}/salary")]
+        public async Task<IActionResult> SetSalary(Guid id, [FromBody]ChangeSalary request)
+        {
+            request.EmployeeId = id;
+
+            await mediator.Send(request);
+
+            return Ok();
         }
     }
 }

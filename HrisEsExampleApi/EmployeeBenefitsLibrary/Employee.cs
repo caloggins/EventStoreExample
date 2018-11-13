@@ -1,8 +1,9 @@
 ﻿using System;
-using JetBrains.Annotations;
 
 namespace EmployeeBenefitsLibrary
 {
+    // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
+    // Virtual methods for easier testing.
     public class Employee : Aggregate
     {
         public Employee()
@@ -19,6 +20,8 @@ namespace EmployeeBenefitsLibrary
         {
             if(State.Id != Guid.Empty)
                 throw new InvalidOperationException("A person may only be hired once.");
+            if(salary <= 0)
+                throw new InvalidOperationException("Negative salaries are not allowed.");
 
             var evt = new EmployeeHired
             {
@@ -30,27 +33,21 @@ namespace EmployeeBenefitsLibrary
             Apply(evt);
         }
 
-    }
 
-    public class EmployeeState : State
-    {
-        public string Name;
-        public decimal Salary;
-        public bool Terminated;
-
-        [UsedImplicitly]
-        public void Apply(EmployeeHired evt)
+        public virtual void ChangeSalary(decimal salary, string reason)
         {
-            Id = evt.EmployeeId;
-            Name = evt.Name;
-            Salary = evt.Salary;
-        }
-    }
+            if(State.Id == Guid.Empty)
+                throw new InvalidOperationException("The employee must be hired.");
+            if(salary < 0)
+                throw new InvalidOperationException("Negative salaries are not allowed.");
 
-    public class EmployeeHired : Event
-    {
-        public string Name;
-        public decimal Salary;
-        public Guid EmployeeId;
+            var evt = new SalaryChanged
+            {
+                Salary = salary,
+                Reason = reason
+            };
+
+            Apply(evt);
+        }
     }
 }

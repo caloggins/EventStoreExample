@@ -30,26 +30,67 @@ namespace HrisEsExampleApiHost.Tests
         }
 
         [Fact]
-        public async void ItCreatesEmployees()
+        public async void Hire_ReturnsTheCorrectResult()
         {
             var details = A.Dummy<HireEmployee>();
 
-            var result = await sut.Create(details) as OkResult;
+            var result = await sut.Hire(details) as OkResult;
 
             result.Should().NotBeNull();
         }
 
         [Fact]
-        public async void ItReturnsTheCorrectResultWhenAnEmployeeIsAlreadyHired()
+        public async void Hire_DispatchesTheCommand()
         {
             var request = A.Dummy<HireEmployee>();
 
+            await sut.Hire(request);
+
+            A.CallTo(() => mediator.Send(request, CancellationToken.None)).MustHaveHappened();
+        }
+
+        [Fact]
+        public async void Hire_ReturnsCorrectResultWhenThereIsAnError()
+        {
+            var request = A.Dummy<HireEmployee>();
             A.CallTo(() => mediator.Send(request, CancellationToken.None))
                 .Throws<InvalidOperationException>();
 
-            var result = await sut.Create(request);
+            var result = await sut.Hire(request);
 
             result.Should().BeOfType<BadRequestResult>();
+        }
+
+        [Fact]
+        public async void SetSalary_ReturnsAppropriateResponseCodeAsync()
+        {
+            var id = Guid.Parse("7152b7b1-e10c-444e-9606-413eb46bf207");
+            var request = ValidChangeSalaryRequest();
+
+            var result = await sut.SetSalary(id, request);
+
+            result.Should().BeOfType<OkResult>();
+        }
+
+        [Fact]
+        public async void SetSalary_DispatchesTheCommand()
+        {
+            var id = Guid.Parse("7152b7b1-e10c-444e-9606-413eb46bf207");
+            var request = ValidChangeSalaryRequest();
+
+            await sut.SetSalary(id, request);
+
+            A.CallTo(() => mediator.Send(request, CancellationToken.None)).MustHaveHappened();
+            request.EmployeeId.Should().Be(id);
+        }
+
+        private ChangeSalary ValidChangeSalaryRequest()
+        {
+            return new ChangeSalary
+            {
+                Salary = 10000,
+                Reason = "Mark is a nice guy."
+            };
         }
     }
 }

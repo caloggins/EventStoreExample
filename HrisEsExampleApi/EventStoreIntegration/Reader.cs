@@ -16,7 +16,7 @@ namespace EventStoreIntegration
         }
 
         public async Task<TAggregate> Read<TAggregate>(Guid id)
-            where TAggregate : Aggregate, new()
+            where TAggregate : IAggregate, new()
         {
             var aggregate = new TAggregate();
             var stream = $"{aggregate.StreamName}.{id}";

@@ -22,7 +22,7 @@ namespace EventStoreIntegration
 
         // todo, wrap a test or three around this method.
         public async Task Write<TAggregate>(TAggregate aggregate)
-            where TAggregate : Aggregate
+            where TAggregate : IAggregate
         {
             var typeMap = selector.For(typeof(TAggregate));
 

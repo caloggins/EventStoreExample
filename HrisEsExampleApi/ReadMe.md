@@ -4,9 +4,24 @@ This solution demonstrates basic interactions with Event Store. It shows one way
 
 # Supported Endpoints
 
+## Viewing Employees
 
 `[GET] /api/employees` - Returns a list of employees.
 
+```json
+{
+    {
+        "name" : "mark",
+        "salary" : 100000,
+        "employed" : true
+    },
+    {
+        "name" : "joe",
+        "salary" : 0,
+        "employed" : false
+    }
+}
+```
 
 `[POST] /api/employees/{guid:id}` - Creates an employee.
 
@@ -33,9 +48,10 @@ Sets the employees salary.
 
 - Returns an error if the employee is termianted.
 
-`[POST] /api/employees/{guid:id}/terminate`
 
 ## Termination
+
+`[POST] /api/employees/{guid:id}/terminate`
 
 ``` json
 {

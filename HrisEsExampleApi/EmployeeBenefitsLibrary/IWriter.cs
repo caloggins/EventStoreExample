@@ -4,6 +4,6 @@ namespace EmployeeBenefitsLibrary
 {
     public interface IWriter
     {
-        Task Write<TAggregate>(TAggregate aggregate) where TAggregate : Aggregate;
+        Task Write<TAggregate>(TAggregate aggregate) where TAggregate : IAggregate;
     }
 }

@@ -110,6 +110,15 @@ namespace EmployeeBenefitsLibrary.Tests
                 .WithMessage("Negative salaries are not allowed.");
         }
 
+        [Fact]
+        public void Terminate_ThrowExceptionWhenNotHired()
+        {
+            Action act = () => sut.Terminate("reason");
+
+            act.Should().Throw<InvalidOperationException>()
+                .WithMessage("You cannot fire someone you didn't hire!");
+        }
+
         private void HireEmployee()
         {
             sut.Hire(Guid.NewGuid(), "name", 1);

@@ -6,11 +6,11 @@ namespace EmployeeBenefitsLibrary.Tests
 {
     public class AggregateTests
     {
-        private readonly Aggregate sut;
+        private readonly Aggregate<State> sut;
 
         public AggregateTests()
         {
-            sut = A.Fake<Aggregate>();
+            sut = A.Fake<Aggregate<State>>();
         }
 
         [Fact]

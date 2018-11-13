@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using System.Text;
+using EmployeeBenefitsLibrary;
 using Newtonsoft.Json;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public class StreamToDomainEventConverter : IConverter
     {

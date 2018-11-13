@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreIntegration.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesMonitor", "EmployeesMonitor\EmployeesMonitor.csproj", "{BB6AE1CE-EFAD-4316-BD34-B4BCD196EA66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDataLibrary", "EmployeeDataLibrary\EmployeeDataLibrary.csproj", "{EE25DE23-9E5F-4CFA-B862-59E1BAAC800F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDataLibrary.Tests", "EmployeeDataLibrary.Tests\EmployeeDataLibrary.Tests.csproj", "{4538C075-24E5-4FD8-85E2-3013F3F7C539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{BB6AE1CE-EFAD-4316-BD34-B4BCD196EA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB6AE1CE-EFAD-4316-BD34-B4BCD196EA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB6AE1CE-EFAD-4316-BD34-B4BCD196EA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE25DE23-9E5F-4CFA-B862-59E1BAAC800F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE25DE23-9E5F-4CFA-B862-59E1BAAC800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE25DE23-9E5F-4CFA-B862-59E1BAAC800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE25DE23-9E5F-4CFA-B862-59E1BAAC800F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4538C075-24E5-4FD8-85E2-3013F3F7C539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4538C075-24E5-4FD8-85E2-3013F3F7C539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4538C075-24E5-4FD8-85E2-3013F3F7C539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4538C075-24E5-4FD8-85E2-3013F3F7C539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

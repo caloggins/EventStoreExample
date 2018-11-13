@@ -34,6 +34,8 @@ namespace HrisEsExampleApiHost
 
             builder.RegisterModule<MediatrModule>();
             builder.RegisterModule<EventStoreModule>();
+            builder.RegisterModule<DomainModule>();
+            builder.RegisterModule<DataModule>();
 
             builder.Populate(services);
             var container = builder.Build();

@@ -6,6 +6,8 @@ using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
+
+using Data = EmployeeDataLibrary;
 // ReSharper disable PossibleNullReferenceException
 
 namespace HrisEsExampleApiHost.Tests
@@ -22,11 +24,15 @@ namespace HrisEsExampleApiHost.Tests
         }
 
         [Fact]
-        public void GetReturnsValue()
+        public async void Employees_ReturnsListOfEmployees()
         {
-            var result = sut.Employees();
+            var employees = A.CollectionOfDummy<Data.Employee>(5);
+            A.CallTo(() => mediator.Send(A<Data.GetEmployees>._, CancellationToken.None))
+                .Returns(employees);
 
-            result.Value.Should().Be("Hello, world.");
+            var result = await sut.Employees() as OkObjectResult;
+
+            result.Value.Should().BeEquivalentTo(employees);
         }
 
         [Fact]
@@ -59,6 +65,12 @@ namespace HrisEsExampleApiHost.Tests
             var result = await sut.Hire(request);
 
             result.Should().BeOfType<BadRequestResult>();
+        }
+
+        [Fact]
+        public void GetSalary_ReturnsResponseCode()
+        {
+            
         }
 
         [Fact]

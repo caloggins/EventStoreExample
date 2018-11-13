@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeeBenefitsLibrary\EmployeeBenefitsLibrary.csproj" />
+    <ProjectReference Include="..\EmployeeDataLibrary\EmployeeDataLibrary.csproj" />
     <ProjectReference Include="..\EventStoreIntegration\EventStoreIntegration.csproj" />
   </ItemGroup>
 

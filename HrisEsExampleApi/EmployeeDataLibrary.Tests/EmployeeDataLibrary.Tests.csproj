@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="FakeItEasy" Version="4.9.1" />
     <PackageReference Include="FluentAssertions" Version="5.5.0" />
     <PackageReference Include="MediatR" Version="5.1.0" />
@@ -19,18 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeBenefitsLibrary\EmployeeBenefitsLibrary.csproj" />
     <ProjectReference Include="..\EmployeeDataLibrary\EmployeeDataLibrary.csproj" />
-    <ProjectReference Include="..\HrisEsExampleApiHost\HrisEsExampleApiHost.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.abstractions\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

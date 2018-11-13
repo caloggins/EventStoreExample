@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EmployeeBenefitsLibrary;
+using EmployeeDataLibrary;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,13 @@ namespace HrisEsExampleApiHost
         }
 
         [HttpGet]
-        public ActionResult<string> Employees()
+        public async Task<IActionResult> Employees()
         {
-            return "Hello, world.";
+            var request = new GetEmployees();
+
+            var result = await mediator.Send(request);
+
+            return Ok(result);
         }
 
         [HttpPost("hire")]

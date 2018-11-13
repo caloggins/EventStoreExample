@@ -1,8 +1,7 @@
-﻿using EmployeeBenefitsLibrary.EventStoreIntegration;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
-namespace EmployeeBenefitsLibrary.Tests.EventStoreIntegration
+namespace EventStoreIntegration.Tests
 {
     public class TypeMapSelectorTests
     {

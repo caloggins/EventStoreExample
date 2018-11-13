@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using EmployeeBenefitsLibrary.EventStoreIntegration;
 using EventStore.ClientAPI;
 using FakeItEasy;
 using Xunit;
 
-namespace EmployeeBenefitsLibrary.Tests.EventStoreIntegration
+namespace EventStoreIntegration.Tests
 {
     public class StreamLoaderTests
     {

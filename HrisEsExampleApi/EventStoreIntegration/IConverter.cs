@@ -1,4 +1,6 @@
-﻿namespace EmployeeBenefitsLibrary.EventStoreIntegration
+﻿using EmployeeBenefitsLibrary;
+
+namespace EventStoreIntegration
 {
     public interface IConverter
     {

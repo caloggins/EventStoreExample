@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EventStore.ClientAPI;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public interface IEventStoreReadProxy
     {

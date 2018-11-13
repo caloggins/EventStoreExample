@@ -1,10 +1,10 @@
 ﻿using System;
-using EmployeeBenefitsLibrary.EventStoreIntegration;
+using EmployeeBenefitsLibrary;
 using FakeItEasy;
 using FluentAssertions;
 using Xunit;
 
-namespace EmployeeBenefitsLibrary.Tests.EventStoreIntegration
+namespace EventStoreIntegration.Tests
 {
     public class ReaderTests
     {

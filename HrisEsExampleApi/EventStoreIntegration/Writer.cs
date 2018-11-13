@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeBenefitsLibrary;
 using EventStore.ClientAPI;
 using Newtonsoft.Json;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public class Writer : IWriter
     {

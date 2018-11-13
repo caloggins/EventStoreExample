@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public interface ITypeMapSelector
     {

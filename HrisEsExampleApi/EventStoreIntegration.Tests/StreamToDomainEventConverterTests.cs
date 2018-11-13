@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Text;
-using EmployeeBenefitsLibrary.EventStoreIntegration;
+using EmployeeBenefitsLibrary;
 using FakeItEasy;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace EmployeeBenefitsLibrary.Tests.EventStoreIntegration
+namespace EventStoreIntegration.Tests
 {
     public class StreamToDomainEventConverterTests
     {

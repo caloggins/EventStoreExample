@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using EmployeeBenefitsLibrary;
 using EventStore.ClientAPI;
+using EventStoreIntegration;
 
 namespace HrisEsExampleApiHost.Application
 {
@@ -14,6 +15,9 @@ namespace HrisEsExampleApiHost.Application
                 .InstancePerDependency();
 
             builder.RegisterAssemblyTypes(typeof(Employee).Assembly)
+                .AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(typeof(NoEventFound).Assembly)
                 .AsImplementedInterfaces();
         }
     }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EmployeeBenefitsLibrary;
 
-namespace EmployeeBenefitsLibrary.EventStoreIntegration
+namespace EventStoreIntegration
 {
     public class Reader : IReader
     {

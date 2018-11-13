@@ -1,7 +1,7 @@
 ﻿using EventStore.ClientAPI;
 using Xunit;
 
-namespace EmployeeBenefitsLibrary.Tests.EventStoreIntegration
+namespace EventStoreIntegration.Tests
 {
     public class EventStoreReadProxyTests
     {

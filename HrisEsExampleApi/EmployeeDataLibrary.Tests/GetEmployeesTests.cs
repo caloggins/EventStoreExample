@@ -17,9 +17,8 @@ namespace EmployeeDataLibrary.Tests
         public GetEmployeesTests()
         {
             var options = new DbContextOptionsBuilder<HrisDatabase>()
-                .UseInMemoryDatabase("mydb")
+                .UseInMemoryDatabase("GetEmployeesTests")
                 .Options;
-
             database = new HrisDatabase(options);
             sut = new GetEmployeesHandler(database);
         }

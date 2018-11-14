@@ -1,34 +1,47 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Autofac;
+using EmployeesMonitor.AppInit;
+using EmployeesMonitor.BuildTable;
+using EmployeesMonitor.MaintainTable;
 
 namespace EmployeesMonitor
 {
-    static class Program
+    public static class Program
     {
-        static  void Main()
+        public static void Main(string[] args)
         {
-            EventListener listener = null;
-
-            try
+            Console.CancelKeyPress += (sender, e) =>
             {
-                Console.WriteLine("-- Starting console. --");
-                Console.WriteLine("App is running. Pressing any key at any time will exit.");
+                Console.WriteLine("Exiting...");
+                Environment.Exit(0);
+            };
 
-                listener = new EventListener();
-                listener.Start();
+            Console.WriteLine("Please press <ESC> to exit.");
 
-                Console.ReadKey();
-            }
-            catch (Exception e)
+            var builder = new ContainerBuilder();
+
+            builder.RegisterModule<MediatrModule>();
+            builder.RegisterModule<AppModule>();
+
+            var container = builder.Build();
+
+            var loader = container.Resolve<IPastEventLoader>();
+            var listener = container.Resolve<IEventListener>();
+
+            var tasks = new[]
             {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                Console.WriteLine("-- Press any key to exit. --");
-                Console.ReadKey();
-            }
+                new Task(loader.Run), 
+                new Task(listener.Start)
+            };
 
-            listener?.Dispose();
+            foreach (var task in tasks)
+                task.Start();
+
+            Task.WaitAll(tasks);
+
+            Console.ReadKey();
         }
 
     }

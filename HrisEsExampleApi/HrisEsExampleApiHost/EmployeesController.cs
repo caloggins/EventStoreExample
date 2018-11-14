@@ -53,6 +53,16 @@ namespace HrisEsExampleApiHost
             return Ok();
         }
 
+        [HttpGet("{id:guid}/salary")]
+        public async Task<IActionResult> GetSalary(Guid id)
+        {
+            var request = new GetSalaryForEmployee { EmployeeId = id };
+
+            var result = await mediator.Send(request);
+
+            return Ok(result);
+        }
+
         [HttpPost("{id:guid}/terminate")]
         public async Task<IActionResult> Terminate(Guid id, Terminate request)
         {

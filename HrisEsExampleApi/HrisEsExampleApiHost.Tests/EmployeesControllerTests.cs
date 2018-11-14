@@ -68,9 +68,19 @@ namespace HrisEsExampleApiHost.Tests
         }
 
         [Fact]
-        public void GetSalary_ReturnsResponseCode()
+        public async void GetSalary_ReturnsResponseCode()
         {
-            
+            const decimal expected = 10000;
+            Data.GetSalaryForEmployee request = null;
+            var id = Guid.Parse("9a63d7f4-ce70-4308-9d16-440f79ed61ea");
+            A.CallTo(() => mediator.Send(A<Data.GetSalaryForEmployee>._, CancellationToken.None))
+                .Invokes(call => request = call.GetArgument<Data.GetSalaryForEmployee>(0))
+                .Returns(expected);
+
+            var result = await sut.GetSalary(id) as OkObjectResult;
+
+            result.Value.Should().Be(expected);
+            request.EmployeeId.Should().Be(id);
         }
 
         [Fact]
